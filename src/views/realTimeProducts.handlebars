@@ -1,0 +1,64 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 offser-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3 mt-3" id="formC">
+
+                        <div class="col-6">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" name="title" class="form-control" id="title">
+                        </div>
+                        <div class="col-6">
+                            <label for="code" class="form-label">Code</label>
+                            <input type="text" name="code" class="form-control" id="code">
+                        </div>
+                        <div class="col-6">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" name="price" class="form-control" id="price">
+                        </div>
+                        <div class="col-6">
+                            <label for="stock" class="form-label">stock</label>
+                            <input type="number" name="stock" class="form-control" id="stock">
+                        </div>
+                        <div class="col-6">
+                            <label for="status" class="form-label">Status</label>
+                            <input type="text" name="status" class="form-control" id="status">
+                        </div>
+                        <div class="col-6">
+                            <label for="category" class="form-label">category</label>
+                            <input type="text" name="category" class="form-control" id="category">
+                        </div>
+                        <div class="col-12">
+                            <label for="description" class="form-label">Description</label>
+                            <input class="form-control" type="text" name="description" id="description"t>
+                        </div>
+                        <div class="col-12">
+                        <label for="thumbnail" class="form-label">Thumbnail</label>
+                            <input class="form-control" type="text" name="thumbnail" id="thumbnail"t>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="send">Submit</button>
+
+                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 offser-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3 mt-3" id="formD">
+                        <div class="col-12">
+                        <label for="delete" class="form-label">deleteid</label>
+                            <input class="form-control" type="text" placeholder="put id" name="delete" id="id_delete"t>
+                        </div>
+                        <button type="submit" class="btn btn-danger" id="send_delete">Delete</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container py-4">
+    <div class="row row-cols-4" id="realTimeProds">
+    </div>
+</div>
