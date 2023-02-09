@@ -16,7 +16,7 @@ router.get('/', async (req, res)=>{
 router.get('/:id', async (req, res)=>{
     const {id} = req.params;
     try {
-        const result = await cartModel.findById(id);
+        const result = await cartModel.findById(id).populate('products.product');
         res.status(200).send(result);
     } catch (error) {
         res.status(404).send("Cart not found");
