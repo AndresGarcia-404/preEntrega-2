@@ -67,8 +67,8 @@ router.post('/:cid/product/:pid', async (req,res)=>{
 router.delete('/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        await cartModel.findByIdAndDelete(id)
-        res.status(200).send("deleted")
+        await cartModel.findByIdAndUpdate(id,{products:[]})
+        res.status(200).send("products deleted successfully")
     } catch (error) {
         res.status(404).send("Cart Not Found")
     }
