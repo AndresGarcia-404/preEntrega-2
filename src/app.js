@@ -5,6 +5,7 @@ import { engine } from 'express-handlebars';
 import {Server} from 'socket.io'
 import productRouter from "./routes/products.routes.js";
 import viewsRouter from "./routes/views.routes.js";
+import cartRouter from "./routes/carts.routes.js";
 import {productModel} from "./models/products.model.js"
 
 
@@ -26,6 +27,7 @@ app.set("views","./src/views");
 app.use(express.static("public"));
 
 app.use("/api/products",productRouter);
+app.use("/api/carts",cartRouter);
 app.use("/",viewsRouter);
 
 const httpServer = app.listen(PORT, () => {
