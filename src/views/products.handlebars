@@ -1,1 +1,39 @@
-<h1>prods</h1>
+ <h1>Products</h1>
+ <div class="container">
+    <div class="row p-5">
+        {{#each productos}}
+            <div class="col-md-4">
+                <div class="p-4">    
+                    <div class="card">  
+                        <img class="card-image-top" src="../images/defaultimg.png"?>
+                        <div class="card-body"> 
+                            <h5 class="card-title">{{this.title}}</h1>
+                            <h6 class="card-subtitle"><strong>id:</strong> {{this._id}}</h6>
+                            <h6 class="card-subtitle text-muted"><strong>code:</strong> {{this.code}}</h6>
+                            <h6 class="card-subtitle text-muted"><strong>category:</strong> {{this.category}}</h6>
+                            <h6 class="card-subtitle text-muted"><strong>thumb:</strong> {{this.thumbnail}}</h6>
+                            <h6 class="card-subtitle text-muted"><strong>status:</strong> {{this.status}}</h6>
+                            <h6 class="card-subtitle text-muted"><strong>stock:</strong> {{this.stock}}</h6>
+                            <h6 class="card-subtitle text-muted"><strong>price:</strong> {{this.price}}</h6>
+                            <p class="card-text">description: {{this.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="row">
+        {{#if pages}}
+        <nav class="mx-auto">
+            <ul class="pagination">
+                    <li class="page-item">
+                        <a href="/products/1" class="page-link">First Page</a>
+                    </li>
+                    <li class="page-item">
+                        <a href="/products/{{pages}}" class="page-link">Last Page</a>
+                    </li>
+            </ul>
+        </nav>
+        {{/if}}
+    </div>
+ </div>

@@ -1,9 +1,18 @@
 import express from 'express';
+import { productModel } from '../models/products.model.js';
 
 const router = express.Router();
 
-router.get('/products', (req, res) => {
-    res.render("products",{title: "products", scriptJs: "./js/prods.js"})
+router.get('/products/:page', async (req, res) => {
+    let perpage = 3;
+    let page = req.params.page || 1;
+    productModel.find().lean().skip((perpage * page)-perpage).limit(perpage).exec((err , products) => {
+        productModel.count((err,count) =>{
+            if(err) return next(err);    
+            let pagesCount = Math.ceil(count/perpage)
+            res.render("products",{title: "products",productos:products,current:page,pages: pagesCount});
+        })
+    })
 })
 
 router.get('/carts/:id', (req, res) => {
