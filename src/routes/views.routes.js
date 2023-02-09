@@ -1,5 +1,6 @@
 import express from 'express';
 import { productModel } from '../models/products.model.js';
+import { cartModel } from '../models/carts.model.js';
 
 const router = express.Router();
 
@@ -15,8 +16,12 @@ router.get('/products/:page', async (req, res) => {
     })
 })
 
-router.get('/carts/:id', (req, res) => {
-    res.render("prodincart")
+//productos cid
+router.get('/carts/:cid', async (req, res) => {
+    const {cid} = req.params;
+    let prods = await cartModel.findById(cid).populate('products.product').lean();
+    console.log(prods.products);
+    res.render("prodincart",{title:"cart", cid:cid,productos:prods.products})
 })
 
 router.get('/realTimeProducts', (req, res) => {
