@@ -11,7 +11,7 @@ router.get('/products/:page', async (req, res) => {
         productModel.count((err,count) =>{
             if(err) return next(err);    
             let pagesCount = Math.ceil(count/perpage)
-            res.render("products",{title: "products",productos:products,current:page,pages: pagesCount});
+            res.render("products",{title: "products",scriptJs: "../js/users.js",productos:products,current:page,pages: pagesCount});
         })
     })
 })
@@ -23,6 +23,10 @@ router.get('/carts/:cid', async (req, res) => {
     console.log(prods.products);
     res.render("prodincart",{title:"cart", cid:cid,productos:prods.products})
 })
+
+router.get('/', (req, res) => {
+    res.redirect("/api/users/signin")
+});
 
 router.get('/realTimeProducts', (req, res) => {
     res.render("realTimeProducts",{title: "realTime", scriptJs: "./js/index.js"})

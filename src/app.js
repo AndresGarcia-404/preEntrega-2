@@ -6,8 +6,10 @@ import {Server} from 'socket.io'
 import productRouter from "./routes/products.routes.js";
 import viewsRouter from "./routes/views.routes.js";
 import cartRouter from "./routes/carts.routes.js";
+import userRouter from "./routes/users.routes.js";
 import {productModel} from "./models/products.model.js"
-
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
 
 dotenv.config()
 
@@ -20,6 +22,12 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser("Esto es un secreto"));
+app.use(session({
+    secret: 'secreto',
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
@@ -28,6 +36,7 @@ app.use(express.static("public"));
 
 app.use("/api/products",productRouter);
 app.use("/api/carts",cartRouter);
+app.use("/api/users",userRouter);
 app.use("/",viewsRouter);
 
 const httpServer = app.listen(PORT, () => {

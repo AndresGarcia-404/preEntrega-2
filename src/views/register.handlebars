@@ -1,0 +1,45 @@
+{{#each errors}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{text}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+<div class="container p-4">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <h4>Register</h4>
+                    <button class="btn btn-primary"><a style="color:azure" href="/api/users/signin">Log in</a></button>
+                </div>
+                <div class="card-body">
+                    <form action="/api/users/register" method="post" class="row g-3 mt-3" id="formC">
+
+                        <div class="col-6">
+                            <label for="first_name" class="form-label">first_name</label>
+                            <input type="text" name="first_name" class="form-control" id="first_name">
+                        </div>
+                        <div class="col-6">
+                            <label for="last_name" class="form-label">last_name</label>
+                            <input type="text" name="last_name" class="form-control" id="last_name">
+                        </div>
+                        <div class="col-6">
+                            <label for="age" class="form-label">age</label>
+                            <input type="number" name="age" class="form-control" id="age">
+                        </div>
+                        <div class="col-6">
+                            <label for="email" class="form-label">email</label>
+                            <input type="text" name="email" class="form-control" id="email">
+                        </div>
+                        <div class="col-6">
+                            <label for="password" class="form-label">password</label>
+                            <input type="password" name="password" class="form-control" id="password">
+                        </div>
+                        <div class="col-6">
+                            <label for="ConfPassword" class="form-label">ConfPassword</label>
+                            <input type="password" name="ConfPassword" class="form-control" id="ConfPassword">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="send">Register</button>
+
+                     </form>
+                </div>
+            </div>
+</div>
