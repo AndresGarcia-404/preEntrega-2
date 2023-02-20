@@ -10,6 +10,7 @@ import userRouter from "./routes/users.routes.js";
 import {productModel} from "./models/products.model.js"
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import MongoStore from 'connect-mongo';
 
 dotenv.config()
 
@@ -23,11 +24,21 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser("Esto es un secreto"));
-app.use(session({
-    secret: 'secreto',
-    resave: true,
-    saveUninitialized: true
-}));
+app.use(
+    session({
+      secret: "coderhouse",
+      resave: true,
+      saveUninitialized: true,
+      store: MongoStore.create({
+        mongoUrl: `mongodb+srv://${DB_USER}:${DB_PASS}@codercluster.u9omn6q.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
+        mongoOptions: {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        },
+        ttl: 30,
+      }),
+    })
+  );
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");

@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { userModel } from "../models/users.model.js";
+import { createHash } from "../utils.js";
+import { isValidPassword } from "../utils.js";
 
 const router = Router();
 
@@ -19,12 +21,13 @@ router.post('/signin', async (req, res)=>{
     if (!user) {
         errors.push({text: 'User not found'});
     }
-    if (user && user.password !== password) {
+    if (user && !isValidPassword(password, user)) {
         errors.push({text: 'Password incorrect'});
     }
     if(errors.length > 0){
         res.render('signin',{errors});
     } else {
+        req.session.user = user;
         res.cookie('user_name',user.first_name)
         res.cookie('userRole','Usuario')
         res.redirect('/products/1');
@@ -47,7 +50,7 @@ router.post('/register', async (req, res)=>{
     if(errors.length > 0){
         res.render('register',{errors});
     } else {
-        const result = await userModel.create({first_name, last_name, age,email, password});
+        const result = await userModel.create({first_name, last_name, age,email, password: createHash(password)});
         res.cookie('user_name',first_name)
         res.cookie('userRole','Usuario')
         res.redirect('/products/1');
