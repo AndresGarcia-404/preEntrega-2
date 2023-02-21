@@ -1,4 +1,9 @@
-<div class="container" id="credenciales"></div>
+{{#if logStatus}}
+    <div class="container">
+        <h4>Bienvenido: {{name}}, email: {{email}}, rol: {{rol}}</h4>
+        <button class="btn btn-danger" id="logout">Log out</button>
+    </div>
+{{/if}}
  <h1>Products</h1>
  <div class="container">
     <div class="row p-5">
@@ -17,6 +22,7 @@
                             <h6 class="card-subtitle text-muted"><strong>stock:</strong> {{this.stock}}</h6>
                             <h6 class="card-subtitle text-muted"><strong>price:</strong> {{this.price}}</h6>
                             <p class="card-text">description: {{this.description}}</p>
+                            <a href="#" class="btn btn-primary">Comprar</a>
                         </div>
                     </div>
                 </div>
@@ -30,6 +36,11 @@
                     <li class="page-item">
                         <a href="/products/1" class="page-link">First Page</a>
                     </li>
+                    {{#each paginaInd}}
+                        <li class="page-item">
+                            <a href="/products/{{this.pagina}}" class="page-link">{{this.pagina}}</a>
+                        </li>
+                    {{/each}}
                     <li class="page-item">
                         <a href="/products/{{pages}}" class="page-link">Last Page</a>
                     </li>

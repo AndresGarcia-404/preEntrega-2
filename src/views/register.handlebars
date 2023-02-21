@@ -1,9 +1,3 @@
-{{#each errors}}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{text}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{{/each}}
 <div class="container p-4">
             <div class="card">
                 <div class="card-header" style="text-align: center;">
@@ -29,13 +23,9 @@
                             <label for="email" class="form-label">email</label>
                             <input type="text" name="email" class="form-control" id="email">
                         </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="password" class="form-label">password</label>
                             <input type="password" name="password" class="form-control" id="password">
-                        </div>
-                        <div class="col-6">
-                            <label for="ConfPassword" class="form-label">ConfPassword</label>
-                            <input type="password" name="ConfPassword" class="form-control" id="ConfPassword">
                         </div>
                         <button type="submit" class="btn btn-primary" id="send">Register</button>
 

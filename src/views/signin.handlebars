@@ -1,9 +1,3 @@
-{{#each errors}}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{text}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{{/each}}
 <div class="container p-4">
             <div class="card">
                 <div class="card-header" style="text-align: center;">
@@ -21,7 +15,7 @@
                             <input type="password" name="password" class="form-control" id="password">
                         </div>
                         <button type="submit" class="btn btn-primary" id="send">Sign In</button>
-
+                        <button class="btn btn-dark"><a style="color:azure" href="/api/sessions/github">Login con git</a></button>
                      </form>
                 </div>
             </div>
