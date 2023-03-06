@@ -10,4 +10,14 @@ router.get('/githubcallback', passport.authenticate('github', { failureRedirect:
     res.redirect('/products/1');
 })
 
+router.get("/current", async (req, res) => {
+    if (req.user) {
+        res.json(req.user);
+    }
+    else {
+        res.status(200).send("User not logged in");
+    }
+
+});
+
 export default router;
